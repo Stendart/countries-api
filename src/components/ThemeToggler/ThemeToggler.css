@@ -1,0 +1,9 @@
+.theme-toggler__btn {
+  border-radius: 12px;
+  padding: 10px 8px;
+
+  border: none;
+  cursor: pointer;
+
+  font-size: 16px;
+}

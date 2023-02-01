@@ -1,38 +1,67 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+.App__header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 100px;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App__header--white {
+  background-color: rgb(206, 189, 168);
+}
+
+.App__header--dark {
+  background-color: #404b62;
+}
+
+.App__header-wrapper {
+  width: calc(100% - 50px);
+
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 0 auto;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App__tools-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 30px auto 25px;
+}
+
+.App__main {
+  min-height: calc(100% - 100px);
+  padding-top: 1px;
+}
+
+.App__search {
+  width: 30%;
+}
+
+.App__filter {
+ 
+}
+
+.App__countries-list {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.App--white {
+  background-color: antiquewhite;
+}
+
+.App--dark {
+  background-color: #4d5a75;
 }

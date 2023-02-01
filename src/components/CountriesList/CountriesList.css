@@ -1,0 +1,11 @@
+.countries-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: stretch
+}
+
+.countries-list__item {
+  width: 20%;
+}
