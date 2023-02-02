@@ -1,23 +1,25 @@
-import React, { usrState, useEffect, useState } from 'react'
-import { useSearchParams, useParams, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
+import { THEME_COLOR_MAP } from '../../store/theme-store/theme-reduser';
 
 import { loadDetailByName } from '../../api/countries-api';
 import { getCountriesByFifa } from '../../store/countries-store/countries-selectors';
 import './SelectCountry.css'
 
-export const SelectCountry = (/*{name, area, capital, flag, region, startOfWeek, population}*/) => {
+export const SelectCountry = () => {
   const [countryInfo, setCountryInfo] = useState();
   const { name: selectCountryName } = useParams();
+  const theme = useSelector(state => state.theme.color)
 
   useEffect(() => {
     loadDetailByName(selectCountryName).then(country => {
       setCountryInfo(country[0])
     })
-  }, []);
+  }, [selectCountryName]);
 
   const neighbors = useSelector(state => getCountriesByFifa(state, countryInfo?.borders || []));
-
   const navigate = useNavigate();
 
   if (!countryInfo) {
@@ -27,20 +29,19 @@ export const SelectCountry = (/*{name, area, capital, flag, region, startOfWeek,
   const {name, area, capital, flags, region, languages, population, borders} = countryInfo;
   const parsedLanguages = Object.entries(languages);
 
-  
-
-  const neighborsClickHsndler = (countryName) => {
-    
-    // ToDo разобраться с переключением роутов
-    navigate(countryName)
-
-    // navigate(-1) - для возврата по истоии
-
+  const neighborsClickHandler = (countryName) => {
+    navigate(`/country/${countryName}`);
   }
-  console.log('neighbors', neighbors);
+
+  const goBack = () => {
+    navigate(-1);
+  }
 
   return (
-    <div className="select-country">
+    <div className={"select-country " + 
+      (theme === THEME_COLOR_MAP.white ? 'select-country__white' : 'select-country__dark')
+    }>
+      <button className="select-country__nav-btn" onClick={goBack}> {'<= Back'}</button>
       <div className="select-country__wrapper">
         <img src={flags.png} className="select-country__flag" alt=''/>
         <div className="select-country__info">
@@ -74,10 +75,10 @@ export const SelectCountry = (/*{name, area, capital, flag, region, startOfWeek,
       <div className="select-country__neighbors">
         {
           neighbors.map(neighbor => {
-            return  <button key={neighbor?.name.common} 
+            return  <button key={neighbor.name.common} 
                             className="select-country__neighbors-item"
-                            onClick={() => neighborsClickHsndler(neighbor?.name.common)}>
-                      {neighbor?.name.common}
+                            onClick={() => neighborsClickHandler(neighbor.name.common)}>
+                      {neighbor.name.common}
                     </button>
             
           })

@@ -1,6 +1,16 @@
 .select-country {
   width: 100%;
   height: 100%;
+
+  padding-top: 1px;
+}
+
+.select-country__white {
+  background-color: antiquewhite;
+}
+
+.select-country__dark {
+  background-color: #4d5a75;
 }
 
 .select-country__wrapper {
@@ -10,7 +20,7 @@
   
   display: flex;
   flex-direction: column;
-  background-color: aliceblue;
+  background-color: #a9d0f2;
 
   box-shadow: 1px 1px 3px rgb(207, 169, 169);
 }
@@ -61,4 +71,15 @@
   border: 1px solid rgb(216, 187, 187);
   font-size: 14px;
   border-radius: 12px;
+}
+
+.select-country__nav-btn {
+  border-radius: 12px;
+  padding: 10px 8px;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 16px;
+  min-width: 100px;
+
+  margin-top: 40px;
 }

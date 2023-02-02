@@ -20,7 +20,9 @@ export const getCountriesByFifa = (state, fifas) => {
   const countriesList = [];
   fifas.forEach(fifa => {
     const country = state.countries.list.find(country => country.fifa === fifa);
-    countriesList.push(country);
+    if(country) {
+      countriesList.push(country);
+    }
   });
   return countriesList;
 }

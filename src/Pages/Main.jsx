@@ -19,7 +19,6 @@ export const Main = () => {
   const filteredByRgionCountries = useSelector((state) => getFilteredByRgionCountries(state, countries));
   const filteredBySearchString = useSelector((state) => getFilteredBySearchString(state, filteredByRgionCountries));
 
-
   const selectHandler = (e) => {
     dispatch(addFilterRegion(e.target.value));
   }
@@ -31,7 +30,6 @@ export const Main = () => {
   useEffect(()=>{
     setAllRegions(new Set(countries.map(country => country.region)))
   }, [countries])
-  console.log(countries);
 
   return (
     <main className={'App__main ' + (theme === THEME_COLOR_MAP.dark ? 'App--dark' : 'App--white')}>
